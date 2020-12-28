@@ -1,0 +1,23 @@
+﻿@model Vidly.Models.Customer
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    tr.even {
+        background-color: #F5F5F5 !important;
+    }
+</style>
+
+<div style="width:100%; margin:1.5rem auto">
+    <table id="myTable" class="dataTables">
+        <thead>
+            <tr><th>Name</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>@Model.Name</td></tr> 
+        </tbody>
+    </table>
+</div>
+<a href="/Customers">Back</a>

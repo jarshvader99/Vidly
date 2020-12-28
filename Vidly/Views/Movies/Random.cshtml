@@ -4,6 +4,33 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section Scripts {
+    <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-<h2>@Model.Name</h2>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+    <script>
+        $(document).ready(function () {
+            $(".dataTables").dataTable();
+        })
+    </script>
+}
+<style>
+    tr.even {
+        background-color: #F5F5F5 !important;
+    }
+</style>
+
+<div style="width:100%; margin:1.5rem auto">
+    <table id="myTable" class="dataTables">
+        <thead>
+            <tr><th>Title</th></tr>
+        </thead>
+        <tbody>        
+            <tr><td>@Model.Name</td></tr>
+        </tbody>
+    </table>
+</div>
 

@@ -1,21 +1,51 @@
 ﻿@model Vidly.ViewModels.CustomersViewModel
 
 @{
-    ViewBag.Title = "Customers";
+    ViewBag.Title = "Customer";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Customers</h2>
-@if (Model.Customers.Count == 0)
-{
-    <text>There are no customers yet.</text>
+@section Scripts {
+    <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+    <script>
+        $(document).ready(function () {
+            $(".dataTables").dataTable();
+        })
+    </script>
 }
-else
-{
-    <ul>
-        @foreach (var customer in Model.Customers)
-        {
-            <li>@customer.Name</li>
-        }
-    </ul>
-}
+<style>
+    tr.even {
+        background-color: #F5F5F5 !important;
+    }
+</style>
+
+<div style="width:100%; margin:1.5rem auto">
+    <table id="myTable" class="dataTables">
+        <thead>
+            <tr><th>Name</th></tr>
+        </thead>
+        <tbody>
+            @if (Model.Customers.Count == 0)
+            {
+                <text>There are no customers yet.</text>
+            }
+            else 
+            { 
+                foreach (var customer in Model.Customers)
+                {
+                    <tr><td><a href="/Customers/Details/@customer.id">@customer.Name</a></td></tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+
+

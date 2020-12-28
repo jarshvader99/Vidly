@@ -15,8 +15,8 @@ namespace Vidly.Controllers
         {
             var customers = new List<Customer>
             {
-                new Customer { Name = "cust1" },
-                new Customer { Name = "cust2" }
+                new Customer { id = 1, Name = "cust 1" },
+                new Customer { id = 2, Name = "cust 2" }
             };
 
             var viewResult = new CustomersViewModel()
@@ -24,6 +24,27 @@ namespace Vidly.Controllers
                 Customers = customers
             };
             return View(viewResult);
+        }
+
+        // GET: Customer Details
+        public ActionResult Details(int id)
+        {
+            var customers = new List<Customer>
+            {
+                new Customer { id = 1, Name = "cust 1" },
+                new Customer { id = 2, Name = "cust 2" }
+            };
+            var customerDetails = new Customer { };
+            foreach(var customer in customers)
+            {
+                if(id == customer.id)
+                {
+                    customerDetails = customer;
+                    break;
+                }
+                
+            }
+            return View(customerDetails);
         }
     }
 }
